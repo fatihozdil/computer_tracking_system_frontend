@@ -1,0 +1,7 @@
+// page grid layout 
+@mixin pageLayout(){
+	width: 100%;
+	min-height: 100vh;
+	margin: 0;
+	display: grid ;
+	grid-template-columns: 
