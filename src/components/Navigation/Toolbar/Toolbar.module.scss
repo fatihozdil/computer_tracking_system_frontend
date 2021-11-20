@@ -1,12 +1,10 @@
+@import '../../../sass/main.scss';
 .navbar{
-	background-color: #213263;
+	background-color: $main-color;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
-	.menuIcon{ 
-		color: white;
-		font-size: 36px;
-	}
+	
 }
 	

@@ -1,0 +1,25 @@
+@import '../../../sass/main.scss';
+.SideBar_hide {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	top: 0px;
+	left: 0px;
+	background-color: $main-color;
+	@include transformEffect_hide(-100%, 50px);
+	.title{
+		display:flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+	.Texts{
+		margin-top: 10px;
+	}
+}
+
+.SideBar_show{
+	@include transformEffect_show(0px, 50px);
+	left: 0px;
+}
+
+	

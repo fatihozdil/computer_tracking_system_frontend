@@ -1,7 +1,23 @@
 // page grid layout 
+/*
 @mixin pageLayout(){
 	width: 100%;
 	min-height: 100vh;
 	margin: 0;
 	display: grid ;
 	grid-template-columns: 
+	*/
+
+// used to add transform effect
+@mixin transformEffect_hide($x, $y) {
+	  position: fixed;
+
+	    transform: translate($x, $y);
+	      opacity: 0;
+	        transition: transform 0.5s ease, opacity 0.15s linear 0.1s;
+	}
+	// used to add transform effect
+	@mixin transformEffect_show($x, $y) {
+		  transform: translate($x, $y);
+		    opacity: 1;
+	    }
