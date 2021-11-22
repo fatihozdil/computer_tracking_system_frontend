@@ -1,40 +1,39 @@
-@import '../../../../sass/main.scss';
+@import "../../../../sass/main.scss";
 
 .NavigationText {
-	list-style: none;
-	display: flex;
-	align-items: center;
-	margin: 0 10px;
-	font-size: 1em;
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  font-size: 1em;
+  color: white;
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    font-weight: normal;
+    transition: font-weight 0.2s;
 
-	a{
-		color: #ffffff;
-		text-decoration: none;
-		width: 100%;
-		display: block;
-		box-sizing: border-box;
-		font-weight: normal;
-		transition: font-weight .2s;
-
-		&:hover,
-		&:active { 
-			font-weight: bold;
-		}
-		&.active {
-			font-weight: bold;
-		}
-	}
+    &:hover,
+    &:active {
+      font-weight: bold;
+    }
+    &.active {
+      font-weight: bold;
+    }
+  }
 }
 
 @media screen and (max-width: 950px) {
-	    .NavigationText {
-		font-size: 10px;
-	    }
+  .NavigationText {
+    font-size: 10px;
+  }
 }
 @media screen and (max-width: 850px) {
-	.NavigationText{
-		font-size: 1.3em;
+  .NavigationText {
+    font-size: 1.3em;
 
-		text-align: center;
-	}
+    text-align: center;
+  }
 }

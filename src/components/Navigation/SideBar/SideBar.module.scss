@@ -1,25 +1,37 @@
-@import '../../../sass/main.scss';
+@import "../../../sass/main.scss";
 .SideBar_hide {
-	display: flex;
-	height: 100%;
-	flex-direction: column;
-	top: 0px;
-	left: 0px;
-	background-color: $main-color;
-	@include transformEffect_hide(-100%, 50px);
-	.title{
-		display:flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-	.Texts{
-		margin-top: 10px;
-	}
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  top: 50px;
+  left: 0px;
+  width: 232px;
+  background-color: $main-color;
+  @include transformEffect_hide(-100%, 50px);
+  .title {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    h3,
+    h5 {
+      margin: 0px;
+    }
+    h5 {
+      font-weight: normal;
+    }
+  }
+  .Texts {
+    margin: 50px auto 0 auto;
+    gap: 10px;
+    padding: 0px;
+    li:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
 }
 
-.SideBar_show{
-	@include transformEffect_show(0px, 50px);
-	left: 0px;
+.SideBar_show {
+  @include transformEffect_show(0px, 50px);
+  left: 0px;
 }
-
-	
