@@ -1,14 +1,26 @@
-.navigationItems{
-	display: flex;
-	width: 35%;
-	align-items: center;
-	.img { 
-		width: 100px;
-		height: 100px;
-	}
-	.title{ 
-		width: 90%;
-		color: white;
-		font-size: 1.5em;
-	}
+.navigationItems {
+  display: flex;
+  align-items: center;
+  .img {
+    width: 100px;
+    height: 100px;
+  }
+  .title {
+    color: white;
+    font-size: 1.5em;
+  }
+}
+@media screen and (max-width: 850px) {
+  .title {
+    font-size: 1em !important;
+  }
+}
+@media screen and (max-width: 350px) {
+  .title {
+    font-size: 0.8em !important;
+  }
+  .img {
+    width: 60px !important;
+    height: 60px !important;
+  }
 }

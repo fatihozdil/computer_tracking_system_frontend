@@ -1,25 +1,24 @@
-.Layout{
-	width:100%;
-	min-height: 100vh;
-	margin: 0;
-	display: grid;
-	grid-template-columns: 100%;
-	grid-template-rows: 100px auto;
-	grid-template-areas: "header" "main";
+.Layout {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100px auto;
+  grid-template-areas: "header" "main";
 
-	.header{
-		grid-area: header;
-	}
+  .header {
+    grid-area: header;
+  }
 
-	.main {
-		grid-area: main;
-		min-height: 86.7vh;
-	}
-
+  .main {
+    grid-area: main;
+    min-height: 86.7vh;
+  }
 }
 
-@media screen and (max-width: 850px){
-	.Layout{
-		height: auto;
-	}
+@media screen and (max-width: 850px) {
+  .Layout {
+    height: auto;
+  }
 }
