@@ -11,3 +11,8 @@
   transform: translate($x, $y);
   opacity: 1;
 }
+
+@mixin pageLayout() {
+  height: 100%;
+  padding: $page-padding;
+}

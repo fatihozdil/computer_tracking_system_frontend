@@ -1,7 +1,6 @@
 @import "../../sass/main.scss";
 .SignInPage {
-  height: 100%;
-  padding: 50px;
+  @include pageLayout();
   > h3 {
     color: $main-color;
   }
