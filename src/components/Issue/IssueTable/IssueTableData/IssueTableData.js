@@ -1,7 +1,8 @@
 import React from "react";
-import classes from "./IssueTable.module.scss";
+import { Link } from "react-router-dom";
+import classes from "./IssueTableData.module.scss";
 
-const IssueTable = (props) => {
+const IssueTableData = (props) => {
   return (
     <tr>
       <td>{props.data.issue_id}</td>
@@ -10,11 +11,18 @@ const IssueTable = (props) => {
       <td>{props.data.sender_title}</td>
       <td>{props.data.sender_message}</td>
       <td>{props.data.reported_date}</td>
-      <td>{props.data.is_solved}</td>
+      <td
+        className="material-icons"
+        style={{ color: props.data.is_solved ? "green" : "red" }}
+      >
+        {props.data.is_solved ? "done" : "highlight_off"}
+      </td>
       <td>{props.data.solver_name}</td>
       <td>{props.data.solver_message}</td>
       <td>
-        <button>detay</button>
+        <button className={classes.detailButton}>
+          <Link to="detail">detay</Link>
+        </button>
       </td>
       <td>
         <button className={`material-icons ${classes.deleteIcon}`}>
@@ -24,4 +32,4 @@ const IssueTable = (props) => {
     </tr>
   );
 };
-export default IssueTable;
+export default IssueTableData;

@@ -16,7 +16,7 @@ const SideBar = (props) => {
         <h3>Fatih Özdil</h3>
       </div>
       <ul className={classes.Texts}>
-        <NavigationText link="/">Bildirilen Problemler</NavigationText>
+        <NavigationText link="/issue">Bildirilen Problemler</NavigationText>
         <NavigationText link="/computers">Bilgisayarlar</NavigationText>
         <NavigationText link="/users">Kullanıcılar</NavigationText>
       </ul>

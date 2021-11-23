@@ -13,6 +13,22 @@
 }
 
 @mixin pageLayout() {
-  height: 100%;
   padding: $page-padding;
+}
+
+@mixin tableView() {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 10px;
+}
+
+@mixin tableView_property() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  label {
+    color: $main-color;
+    font-weight: bold;
+    width: 30%;
+  }
 }

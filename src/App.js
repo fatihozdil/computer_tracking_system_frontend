@@ -1,5 +1,5 @@
 import "./App.css";
-import { Redirect, Route, Routes, withRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./hoc/Layout/Layout";
 import SignInPage from "./containers/SignInPage/SignInPage";
 import IssuePage from "./containers/IssuePage/IssuePage";
@@ -8,8 +8,8 @@ function App() {
 
   routes = (
     <Routes>
-      <Route path="/signin" exact element={<SignInPage />} />
-      <Route path="/" exact element={<IssuePage />} />
+      <Route path="/signin" element={<SignInPage />} />
+      <Route path="/issue/*" element={<IssuePage />} />
     </Routes>
   );
 

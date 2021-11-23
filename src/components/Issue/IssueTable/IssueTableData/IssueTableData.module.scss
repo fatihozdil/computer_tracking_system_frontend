@@ -1,0 +1,23 @@
+@import "../../../../sass/main.scss";
+tr {
+  td {
+    button {
+      border: none;
+      background-color: transparent;
+      user-select: none;
+      cursor: pointer;
+    }
+    .detailButton {
+      background-color: $main-color;
+      border-radius: 15px;
+      color: white;
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+    .deleteIcon {
+      color: red;
+    }
+  }
+}

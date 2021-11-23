@@ -1,0 +1,10 @@
+@import "../../../sass/main.scss";
+.ComputerProperties {
+  @include tableView();
+  .property {
+    @include tableView_property();
+    input {
+      width: 50%;
+    }
+  }
+}

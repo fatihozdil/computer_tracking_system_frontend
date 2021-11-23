@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 function UseComponentVisible(initialIsVisible) {
   const [isComponentVisible, setIsComponentVisible] =
@@ -12,23 +12,29 @@ function UseComponentVisible(initialIsVisible) {
     }
   };
 
-  const handleClickOutside = (event) => {
-    //hide dropdown when clicked outside of the content
-    if (isComponentVisible) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setIsComponentVisible(false);
+  const handleClickOutside = useCallback(
+    (event) => {
+      //hide dropdown when clicked outside of the content
+      if (isComponentVisible) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setIsComponentVisible(false);
+        }
       }
-    }
-  };
+    },
+    [isComponentVisible]
+  );
   //open dropdown when clicked open button, if it already open then close dropdown
-  const handleClick = (n) => {
-    isComponentVisible == n
-      ? setIsComponentVisible(false)
-      : setIsComponentVisible(n);
-  };
+  const handleClick = useCallback(
+    (n) => {
+      isComponentVisible === n
+        ? setIsComponentVisible(false)
+        : setIsComponentVisible(n);
+    },
+    [isComponentVisible]
+  );
   //close dropdown when mouse live related content(optional)
   const handleMouseleave = (event) => {
-    if (isComponentVisible == 1) {
+    if (isComponentVisible === 1) {
       setIsComponentVisible(false);
     }
   };
@@ -41,7 +47,7 @@ function UseComponentVisible(initialIsVisible) {
 
       document.removeEventListener("click", handleClickOutside, false);
     };
-  }, [isComponentVisible, setIsComponentVisible, handleClick]);
+  }, [handleClick, handleClickOutside]);
 
   return {
     ref,
