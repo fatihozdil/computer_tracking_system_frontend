@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "../../../UI/Button/Button";
 import classes from "./IssueTableData.module.scss";
 
 const IssueTableData = (props) => {
@@ -20,9 +21,9 @@ const IssueTableData = (props) => {
       <td>{props.data.solver_name}</td>
       <td>{props.data.solver_message}</td>
       <td>
-        <button className={classes.detailButton}>
+        <Button>
           <Link to="detail">detay</Link>
-        </button>
+        </Button>
       </td>
       <td>
         <button className={`material-icons ${classes.deleteIcon}`}>

@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../../components/UI/Button/Button";
 import classes from "./SignInPage.module.scss";
 
 const SignInPage = (props) => {
@@ -16,7 +17,9 @@ const SignInPage = (props) => {
           <input type="password" id="password" />
         </div>
         <p className={classes.forgatPassword}>Şifremi Unuttum!</p>
-        <button className={classes.button}>Giriş Yap</button>
+        <Button style={{ marginLeft: "auto", width: "100px", height: "30px" }}>
+          Giriş Yap
+        </Button>
       </div>
     </div>
   );

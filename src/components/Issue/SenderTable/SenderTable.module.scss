@@ -1,0 +1,11 @@
+@import "../../../sass/main.scss";
+
+.SenderTable {
+  @include tableView();
+  .property {
+    @include tableView_property();
+    p {
+      width: 50%;
+    }
+  }
+}
