@@ -1,6 +1,11 @@
 @import "../../../sass/main.scss";
-
-.MessageInput {
-  textarea {
+.SolverTable {
+  @include tableView();
+  margin: 25px;
+  .property {
+    @include tableView_property();
+    p {
+      width: 50%;
+    }
   }
 }

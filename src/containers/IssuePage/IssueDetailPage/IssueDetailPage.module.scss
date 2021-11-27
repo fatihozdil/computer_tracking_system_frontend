@@ -1,0 +1,13 @@
+@import "../../../sass/main.scss";
+
+.IssueDetailPage {
+  .main {
+    margin: 0 auto 0 auto;
+    max-width: 970px;
+    > h1,
+    > h3 {
+      color: $main-color;
+      text-align: center;
+    }
+  }
+}

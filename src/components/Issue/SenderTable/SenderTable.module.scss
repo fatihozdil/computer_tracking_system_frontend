@@ -2,6 +2,7 @@
 
 .SenderTable {
   @include tableView();
+  margin: 25px;
   .property {
     @include tableView_property();
     p {

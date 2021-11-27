@@ -1,0 +1,30 @@
+@import "../../../sass/main.scss";
+.property {
+  display: flex;
+  flex-direction: column;
+  .title {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a6a6a6;
+    cursor: pointer;
+    user-select: none;
+    h4 {
+      color: white;
+      font-weight: normal;
+      margin: 0px;
+    }
+    span {
+      font-size: 34px;
+      color: white;
+    }
+  }
+  .data {
+    background-color: white;
+    @include dropdown_hide();
+  }
+  .data_open {
+    @include dropdown_show(1, auto);
+  }
+}

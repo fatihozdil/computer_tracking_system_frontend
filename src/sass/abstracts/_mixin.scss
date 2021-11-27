@@ -18,17 +18,34 @@
 
 @mixin tableView() {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 @mixin tableView_property() {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   label {
     color: $main-color;
     font-weight: bold;
     width: 30%;
   }
+}
+//used to add effect to the dropdowns default css
+@mixin dropdown_hide {
+  height: 0px;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0;
+  transition: height 0.5s ease, opacity 0.5s linear 0.1s, z-index 0.5s ease;
+}
+//used to add effect to the Dropdowns css when Dropdowns are opened
+@mixin dropdown_show($z, $h) {
+  z-index: $z;
+  opacity: 1;
+  height: #{$h};
 }
