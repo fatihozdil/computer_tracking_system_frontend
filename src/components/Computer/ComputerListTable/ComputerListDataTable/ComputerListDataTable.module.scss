@@ -1,0 +1,18 @@
+tr {
+  td {
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .copyIcon {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      user-select: none;
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+}

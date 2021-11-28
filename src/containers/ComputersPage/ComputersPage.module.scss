@@ -1,0 +1,11 @@
+@import "../../sass/main.scss";
+
+.ComputersPage {
+  @include pageLayout();
+}
+
+@media screen and (max-width: 750px) {
+  .ComputersPage {
+    padding: 10px;
+  }
+}
