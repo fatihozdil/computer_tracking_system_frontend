@@ -1,9 +1,9 @@
 import React from "react";
 import ComputerProperties from "../../../components/Computer/ComputerProperties/ComputerProperties";
 import IssueTable from "../../../components/Issue/IssueTable/IssueTable";
-import SenderTable from "../../../components/Issue/SenderTable/SenderTable";
+import SenderProperties from "../../../components/Issue/SenderProperties/SenderProperties";
 import SolverMessageInput from "../../../components/Issue/SolverMessageInput/SolverMessageInput";
-import SolverTable from "../../../components/Issue/SolverTable/SolverTable";
+import SolverProperties from "../../../components/Issue/SolverProperties/SolverProperties";
 import DropdownTable from "../../../components/UI/DropdownTable/DropdownTable";
 import classes from "./IssueDetailPage.module.scss";
 
@@ -18,11 +18,11 @@ const IssueDetailPage = (props) => {
         </DropdownTable>
 
         <DropdownTable title="Problemi Bildiren Bilgileri">
-          <SenderTable />
+          <SenderProperties />
         </DropdownTable>
 
         <DropdownTable title="Problemi Çözen Bilgileri">
-          <SolverTable />
+          <SolverProperties />
         </DropdownTable>
 
         <SolverMessageInput />

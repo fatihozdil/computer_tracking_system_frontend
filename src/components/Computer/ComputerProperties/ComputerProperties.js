@@ -4,6 +4,7 @@ import classes from "./ComputerProperties.module.scss";
 const ComputerProperties = (props) => {
   const names = [
     "Bilgisayar Numarası",
+    "Mac Adresi",
     "İşletim Sistemi",
     "cpu",
     "ram",

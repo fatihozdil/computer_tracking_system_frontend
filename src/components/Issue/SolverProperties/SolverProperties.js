@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./SolverTable.module.scss";
+import classes from "./SolverProperties.module.scss";
 
-const SolverTable = (props) => {
+const SolverProperties = (props) => {
   const titles = ["Çözen Adı", "Çözen Eposta", "Çözen Mesaj", "Çözülme Tarihi"];
   const table = titles.map((el) => (
     <div className={classes.property}>
@@ -9,6 +9,6 @@ const SolverTable = (props) => {
       <p id={el}>test</p>
     </div>
   ));
-  return <div className={classes.SolverTable}>{table}</div>;
+  return <div className={classes.SolverProperties}>{table}</div>;
 };
-export default SolverTable;
+export default SolverProperties;

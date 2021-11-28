@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./SenderTable.module.scss";
+import classes from "./SenderProperties.module.scss";
 
-const SenderTable = (props) => {
+const SenderProperties = (props) => {
   const titles = [
     "Gönderen Adı",
     "Gönderen Ünvanı",
@@ -15,6 +15,6 @@ const SenderTable = (props) => {
       <p id={el}>test</p>
     </div>
   ));
-  return <div className={classes.SenderTable}>{table}</div>;
+  return <div className={classes.SenderProperties}>{table}</div>;
 };
-export default SenderTable;
+export default SenderProperties;
