@@ -1,4 +1,18 @@
 .MessageInput {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
   textarea {
+    resize: none;
+    border: 1px dashed black;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  > button {
+    width: min-content;
+    padding: 10px;
+    margin-left: auto;
   }
 }
