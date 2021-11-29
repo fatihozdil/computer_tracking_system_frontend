@@ -1,6 +1,6 @@
 import React from "react";
 import ComputerProperties from "../../../components/Computer/ComputerProperties/ComputerProperties";
-import FixturesProperties from "../../../components/Computer/FixturesProperties/FixturesProperties";
+import FixturesProperties from "../../../components/Computer/FixturesTable/FixturesTable";
 import IssueTable from "../../../components/Issue/IssueTable/IssueTable";
 import Button from "../../../components/UI/Button/Button";
 import DropdownTable from "../../../components/UI/DropdownTable/DropdownTable";

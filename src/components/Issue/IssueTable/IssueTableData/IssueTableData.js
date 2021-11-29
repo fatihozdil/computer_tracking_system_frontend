@@ -12,11 +12,13 @@ const IssueTableData = (props) => {
       <td>{props.data.sender_title}</td>
       <td>{props.data.sender_message}</td>
       <td>{props.data.reported_date}</td>
-      <td
-        className="material-icons"
-        style={{ color: props.data.is_solved ? "green" : "red" }}
-      >
-        {props.data.is_solved ? "done" : "highlight_off"}
+      <td>
+        <span
+          className="material-icons"
+          style={{ color: props.data.is_solved ? "green" : "red" }}
+        >
+          {props.data.is_solved ? "done" : "highlight_off"}
+        </span>
       </td>
       <td>{props.data.solver_name}</td>
       <td>{props.data.solver_message}</td>

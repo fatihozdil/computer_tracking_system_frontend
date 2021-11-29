@@ -1,0 +1,46 @@
+@import "../../../sass/main.scss";
+.FixturesTable {
+  @include tableWResponsive();
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    td:nth-of-type(1):before {
+      content: "Sıra No";
+    }
+    td:nth-of-type(2):before {
+      content: "Fiş No";
+    }
+    td:nth-of-type(3):before {
+      content: "Tarih";
+    }
+    td:nth-of-type(4):before {
+      content: "Taşınır Kodu/Ürün Kodu";
+    }
+    td:nth-of-type(5):before {
+      content: "Markası Model Cins Ek Özellik";
+    }
+    td:nth-of-type(6):before {
+      content: "Ölçü Birimi";
+    }
+    td:nth-of-type(7):before {
+      content: "Sicil No";
+    }
+    td:nth-of-type(8):before {
+      content: "Eski Sicil No";
+    }
+    td:nth-of-type(9):before {
+      content: "Seri No";
+    }
+    td:nth-of-type(10):before {
+      content: "Ambar";
+    }
+    td:nth-of-type(11):before {
+      content: "Miktar";
+    }
+    td:nth-of-type(12):before {
+      content: "Birim Fiyat";
+    }
+    td:nth-of-type(13):before {
+      content: "Düşüm Tarihi";
+    }
+  }
+}
