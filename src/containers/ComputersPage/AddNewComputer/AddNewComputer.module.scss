@@ -1,0 +1,21 @@
+@import "../../../sass/main.scss";
+
+.AddNewComputer {
+  .main {
+    margin: 0 auto;
+    max-width: 1300px;
+    h1,
+    h3 {
+      color: $main-color;
+    }
+    h1 {
+      text-align: center;
+    }
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      align-items: center;
+    }
+  }
+}

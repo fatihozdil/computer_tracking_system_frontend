@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AddNewComputer from "./AddNewComputer/AddNewComputer";
 import ComputerDetailPage from "./ComputerDetailPage/ComputerDetailPage";
 
 import classes from "./ComputersPage.module.scss";
@@ -10,6 +11,7 @@ const ComputersPage = () => {
     <Routes>
       <Route path="/" element={<Main />} />
       <Route path="/detail" element={<ComputerDetailPage />} />
+      <Route path="/create-newC" element={<AddNewComputer />} />
     </Routes>
   );
 
