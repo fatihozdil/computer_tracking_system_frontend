@@ -1,0 +1,20 @@
+@import "../../sass/main.scss";
+.UserPage {
+  @include pageLayout();
+  .main {
+    margin: 0 auto;
+    max-width: 1300px;
+    .title {
+      display: flex;
+      align-items: baseline;
+      gap: 40px;
+      justify-content: center;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .UserPage {
+    padding: 10px;
+  }
+}

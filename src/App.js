@@ -4,6 +4,7 @@ import Layout from "./hoc/Layout/Layout";
 import SignInPage from "./containers/SignInPage/SignInPage";
 import IssuePage from "./containers/IssuePage/IssuePage";
 import ComputersPage from "./containers/ComputersPage/ComputersPage";
+import UsersPage from "./containers/UsersPage/UsersPage";
 function App() {
   let routes;
 
@@ -12,6 +13,7 @@ function App() {
       <Route path="/signin" element={<SignInPage />} />
       <Route path="/issue/*" element={<IssuePage />} />
       <Route path="/computers/*" element={<ComputersPage />} />
+      <Route path="/users" element={<UsersPage />} />
     </Routes>
   );
 
