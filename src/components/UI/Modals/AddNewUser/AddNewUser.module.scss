@@ -1,0 +1,25 @@
+@import "../../../../sass/main.scss";
+.AddNewUser {
+  top: 20%;
+  left: 50%;
+  padding: 20px;
+  @include transformEffect_hide(-50%, -50%);
+  height: 180px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgb(156, 155, 155);
+  border-radius: 20px;
+  z-index: -1;
+  > div {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+  }
+}
+
+.AddNewUser_open {
+  @include transformEffect_show(-50%, 0%);
+  z-index: 1;
+}
