@@ -6,7 +6,7 @@ const SolverMessageInput = (props) => {
   return (
     <div className={classes.MessageInput}>
       <textarea placeholder="Mesajınızı Buraya Yazınız" />
-      <Button>Kaydet</Button>
+      <Button onClick={props.onClick}>Kaydet</Button>
     </div>
   );
 };

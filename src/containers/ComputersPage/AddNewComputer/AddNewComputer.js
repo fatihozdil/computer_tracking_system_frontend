@@ -3,9 +3,12 @@ import ComputerProperties from "../../../components/Computer/ComputerProperties/
 import FixturesDataTable from "../../../components/Computer/FixturesTable/FixturesDataTable/FixturesDataTable";
 import FixturesTable from "../../../components/Computer/FixturesTable/FixturesTable";
 import Button from "../../../components/UI/Button/Button";
+import GeneralModal from "../../../components/UI/Modals/GeneralModal/GeneralModal";
+import UseComponentVisible from "../../../helpers/Dropdown";
 import classes from "./AddNewComputer.module.scss";
 
 const AddNewComputer = (props) => {
+  const { ref, isComponentVisible, handleClick } = UseComponentVisible(false);
   const [arr, setArr] = useState([<FixturesDataTable />]);
 
   const data = arr.map((el) => el);
@@ -38,11 +41,19 @@ const AddNewComputer = (props) => {
               marginLeft: "auto",
               display: "block",
             }}
+            onClick={() => handleClick(1)}
           >
             Ekle
           </Button>
         </div>
       </div>
+      <GeneralModal
+        onClick={() => handleClick(false)}
+        ref={ref}
+        isVisible={isComponentVisible}
+      >
+        Devam etmek istediğinize emin misiniz?
+      </GeneralModal>
     </div>
   );
 };

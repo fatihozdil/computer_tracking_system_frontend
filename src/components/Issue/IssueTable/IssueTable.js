@@ -1,7 +1,10 @@
 import React from "react";
+import UseComponentVisible from "../../../helpers/Dropdown";
+import GeneralModal from "../../UI/Modals/GeneralModal/GeneralModal";
 import classes from "./IssueTable.module.scss";
 import IssueTableData from "./IssueTableData/IssueTableData";
 const IssueTable = (props) => {
+  const { ref, isComponentVisible, handleClick } = UseComponentVisible(false);
   const data = {
     issue_id: 1,
     computer_id: 23,
@@ -53,11 +56,18 @@ const IssueTable = (props) => {
         </thead>
 
         <tbody>
-          <IssueTableData data={data} />
-          <IssueTableData data={data} />
-          <IssueTableData data={data} />
+          <IssueTableData onClick={() => handleClick(1)} data={data} />
+          <IssueTableData onClick={() => handleClick(1)} data={data} />
+          <IssueTableData onClick={() => handleClick(1)} data={data} />
         </tbody>
       </table>
+      <GeneralModal
+        onClick={() => handleClick(false)}
+        ref={ref}
+        isVisible={isComponentVisible}
+      >
+        Bu problemi silmek istediğinize emin misiniz?
+      </GeneralModal>
     </div>
   );
 };

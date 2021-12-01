@@ -28,7 +28,10 @@ const IssueTableData = (props) => {
         </Button>
       </td>
       <td>
-        <button className={`material-icons ${classes.deleteIcon}`}>
+        <button
+          onClick={props.onClick}
+          className={`material-icons ${classes.deleteIcon}`}
+        >
           delete
         </button>
       </td>
