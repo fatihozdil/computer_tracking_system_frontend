@@ -5,6 +5,7 @@ import SignInPage from "./containers/SignInPage/SignInPage";
 import IssuePage from "./containers/IssuePage/IssuePage";
 import ComputersPage from "./containers/ComputersPage/ComputersPage";
 import UsersPage from "./containers/UsersPage/UsersPage";
+import CreateIssuePage from "./containers/CreateIssuePage/CreateIssuePage";
 function App() {
   let routes;
 
@@ -14,6 +15,7 @@ function App() {
       <Route path="/issue/*" element={<IssuePage />} />
       <Route path="/computers/*" element={<ComputersPage />} />
       <Route path="/users" element={<UsersPage />} />
+      <Route path="/CreateIssue" element={<CreateIssuePage />} />
     </Routes>
   );
 
