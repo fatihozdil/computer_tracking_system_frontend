@@ -1,0 +1,31 @@
+@import "../../../../sass/main.scss";
+.GeneralModal {
+  top: 10%;
+  left: 50%;
+
+  padding: 20px;
+  @include transformEffect_hide(-50%, -50%);
+
+  height: 200px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(156, 155, 155);
+  border-radius: 20px;
+  .title {
+    border-bottom: 1px solid grey;
+    h4 {
+      color: $main-color;
+    }
+  }
+  .actions {
+    display: flex;
+    margin-top: auto;
+    justify-content: flex-end;
+    gap: 30px;
+  }
+}
+
+.GeneralModal_open {
+  @include transformEffect_show(-50%, 0%);
+}

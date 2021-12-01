@@ -19,8 +19,8 @@ const UserTable = (props) => {
         </thead>
 
         <tbody>
-          <UserDataTable data={data} />
-          <UserDataTable data={data} />
+          <UserDataTable onClick={props.onClick} data={data} />
+          <UserDataTable onClick={props.onClick} data={data} />
         </tbody>
       </table>
     </div>

@@ -7,7 +7,10 @@ const UserDataTable = (props) => {
       <td>{props.data.name_surname}</td>
       <td>{props.data.email}</td>
       <td>
-        <button className={`material-icons ${classes.deleteIcon}`}>
+        <button
+          onClick={props.onClick}
+          className={`material-icons ${classes.deleteIcon}`}
+        >
           delete
         </button>
       </td>
