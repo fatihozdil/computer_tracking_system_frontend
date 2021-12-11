@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "./store/actions/index";
 
 //components
@@ -13,7 +13,7 @@ import UsersPage from "./containers/UsersPage/UsersPage";
 import CreateIssuePage from "./containers/CreateIssuePage/CreateIssuePage";
 
 function App() {
-  const token = localStorage.getItem("token");
+  const token = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   useEffect(() => {

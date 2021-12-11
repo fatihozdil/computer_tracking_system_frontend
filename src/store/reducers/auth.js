@@ -5,6 +5,7 @@ const initialState = {
   error: null,
   loading: false,
   user: null,
+  token: null
 };
 
 const authStart = (state, action) => {
@@ -28,6 +29,7 @@ const authSuccess = (state, action) => {
 
     error: null,
     loading: false,
+    token: action.token
   });
 };
 

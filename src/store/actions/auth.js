@@ -8,9 +8,10 @@ export const authStart = () => {
   };
 };
 
-export const authSuccess = () => {
+export const authSuccess = (token) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
+    token : token
   };
 };
 export const authFail = (error) => {
@@ -92,7 +93,7 @@ export const auth = (email, password, isSignup, name, password2) => {
         if (!isSignup) {
           const token = response.token;
           localStorage.setItem("token", token);
-          dispatch(authSuccess());
+          dispatch(authSuccess(token));
           window.location.reload();
         } else {
           dispatch(signupSuccess());
@@ -117,6 +118,8 @@ export const getUserInfo = (token) => {
       .then((response) => response.json())
       .then((data) => dispatch(fetchUser(data)))
       .catch((err) => console.error(err));
+
+      dispatch(authSuccess(token));
   };
 };
 
