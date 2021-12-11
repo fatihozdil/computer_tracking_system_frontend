@@ -21,18 +21,6 @@ export const authFail = (error) => {
   };
 };
 
-export const signupStart = () => {
-  return {
-    type: actionTypes.SIGNUP_START,
-  };
-};
-
-export const signupSuccess = () => {
-  return {
-    type: actionTypes.SIGNUP_SUCCESS,
-  };
-};
-
 //remove authentication
 export const logout = () => {
   localStorage.removeItem("token");
@@ -73,7 +61,6 @@ export const auth = (email, password, isSignup, name, password2) => {
     };
     let url = HOST_URL + "user/Authenticate";
     if (isSignup) {
-      dispatch(signupStart());
       url = HOST_URL + "user/register";
       authData = {
         name: name,
@@ -95,8 +82,6 @@ export const auth = (email, password, isSignup, name, password2) => {
           localStorage.setItem("token", token);
           dispatch(authSuccess(token));
           window.location.reload();
-        } else {
-          dispatch(signupSuccess());
         }
       })
       .catch((err) => {

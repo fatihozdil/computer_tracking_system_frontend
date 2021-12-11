@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import * as actions from "../../../../store/actions/index";
+//components
 import Button from "../../../UI/Button/Button";
 import classes from "./IssueTableData.module.scss";
 
 const IssueTableData = (props) => {
+  const { solver_id } = props.data;
+  
+  const [computerData, setComputerData] = useState();
+  const [solverData, setSolverData] = useState();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actions.readComputerById(props.data.computer_id, setComputerData));
+    if (solver_id !== null) {
+      dispatch(actions.getUserById(solver_id, setSolverData));
+    }
+  }, [dispatch]);
+  console.log(solverData)
   return (
     <tr>
       <td>{props.data.id}</td>
-      <td>{props.data.computer_id}</td>
+      <td>{computerData && computerData.computer_name}</td>
       <td>{props.data.sender_name}</td>
       <td>{props.data.sender_title}</td>
       <td>{props.data.sender_message}</td>
@@ -20,7 +35,7 @@ const IssueTableData = (props) => {
           {props.data.isSolved === "1" ? "done" : "highlight_off"}
         </span>
       </td>
-      <td>{props.data.solver_name}</td>
+      <td>{solverData ? solverData.name : '' }</td>
       <td>{props.data.solver_message}</td>
       <td>
         <Button>

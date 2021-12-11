@@ -12,18 +12,6 @@ const authStart = (state, action) => {
   return updateObject(state, { error: null, loading: true });
 };
 
-const signupStart = (state, action) => {
-  return updateObject(state, {
-    signupLoading: true,
-  });
-};
-
-const signupSuccess = (state, action) => {
-  return updateObject(state, {
-    signupLoading: false,
-  });
-};
-
 const authSuccess = (state, action) => {
   return updateObject(state, {
     error: null,
@@ -62,10 +50,6 @@ const reducer = (state = initialState, action) => {
       return authLogout(state, action);
     case actionTypes.FETCH_USER:
       return fetchUser(state, action);
-    case actionTypes.SIGNUP_START:
-      return signupStart(state, action);
-    case actionTypes.SIGNUP_SUCCESS:
-      return signupSuccess(state, action);
 
     default:
       return state;
