@@ -1,4 +1,3 @@
-import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { HOST_URL } from "../../settings.js";
 import * as actionTypes from "./actionTypes";

@@ -21,7 +21,7 @@ function App() {
     if (pathname !== "signin") {
       dispatch(actions.authCheckState());
     }
-  }, []);
+  }, [pathname, dispatch]);
 
   let routes;
 
