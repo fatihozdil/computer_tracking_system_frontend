@@ -11,7 +11,7 @@ export const authStart = () => {
 export const authSuccess = (token) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
-    token : token
+    token: token,
   };
 };
 export const authFail = (error) => {
@@ -43,10 +43,10 @@ export const logout = () => {
 };
 
 //fetch login user's info
-export const fetchUser = (user) => {
+export const fetchUser = (name) => {
   return {
     type: actionTypes.FETCH_USER,
-    user: user,
+    name: name,
   };
 };
 
@@ -116,10 +116,10 @@ export const getUserInfo = (token) => {
     };
     fetch(HOST_URL + "user/readUserById", config)
       .then((response) => response.json())
-      .then((data) => dispatch(fetchUser(data)))
+      .then((data) => dispatch(fetchUser(data.name)))
       .catch((err) => console.error(err));
 
-      dispatch(authSuccess(token));
+    dispatch(authSuccess(token));
   };
 };
 

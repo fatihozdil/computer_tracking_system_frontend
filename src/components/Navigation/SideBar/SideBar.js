@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./SideBar.module.scss";
 import NavigationText from "../NavigationItems/NavigationItem/NavigationItem";
+import { useSelector } from "react-redux";
 const SideBar = (props) => {
   //display side bar when clicked drawerToggle
   //define variables for dynamic classnames to display side bar
@@ -13,7 +14,7 @@ const SideBar = (props) => {
     <div className={sideBar} ref={props.ref1}>
       <div className={classes.title}>
         <h5>Hoşgeldiniz</h5>
-        <h3>Fatih Özdil</h3>
+        <h3>{useSelector(state => state.auth.name)}</h3>
       </div>
       <ul className={classes.Texts}>
         <NavigationText link="/issue">Bildirilen Problemler</NavigationText>
