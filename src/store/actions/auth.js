@@ -104,18 +104,20 @@ export const auth = (email, password, isSignup, name, password2) => {
   };
 };
 
-const getUserInfo = (token) => {
-  const config = {
-    method: "GET",
-    headers: {
-      Authorization: token,
-      "Content-Type": "application/json",
-    },
+export const getUserInfo = (token) => {
+  return (dispatch) => {
+    const config = {
+      method: "GET",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+    };
+    fetch(HOST_URL + "user/readUserById", config)
+      .then((response) => response.json())
+      .then((data) => dispatch(fetchUser(data)))
+      .catch((err) => console.error(err));
   };
-  fetch(HOST_URL + "user/readUserById", config)
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.error(err));
 };
 
 // check authentication
@@ -129,7 +131,7 @@ export const authCheckState = () => {
         dispatch(
           checkAuthTimeOutToken((expirationDate - new Date().getTime()) / 1000)
         );
-        getUserInfo(token);
+        dispatch(getUserInfo(token));
       } else dispatch(logout());
     }
   };
