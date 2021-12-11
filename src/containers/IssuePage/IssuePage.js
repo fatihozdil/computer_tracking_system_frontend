@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+//components
 import IssueTable from "../../components/Issue/IssueTable/IssueTable";
 import IssueDetailPage from "./IssueDetailPage/IssueDetailPage";
 import classes from "./IssuePage.module.scss";

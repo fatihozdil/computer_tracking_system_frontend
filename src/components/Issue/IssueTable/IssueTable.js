@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import UseComponentVisible from "../../../helpers/Dropdown";
+import * as actions from "../../../store/actions/index";
+
+//components
 import GeneralModal from "../../UI/Modals/GeneralModal/GeneralModal";
 import classes from "./IssueTable.module.scss";
 import IssueTableData from "./IssueTableData/IssueTableData";
-const IssueTable = (props) => {
+const IssueTable = () => {
   const { ref, isComponentVisible, handleClick } = UseComponentVisible(false);
-  const data = {
-    issue_id: 1,
-    computer_id: 23,
-    sender_name: "fatih ozdil",
-    sender_title: "ogrenci",
-    sender_message: "bilgisayar acilmiyor",
-    reported_date: "08.08.2021 01:19",
-    is_solved: false,
-    solver_name: "fatih ozdil",
-    solver_message: "anakart degisti",
-  };
+  const dispatch = useDispatch();
+  const issues = useSelector((state) => state.issue.issues);
+
+  const loading = useSelector((state) => state.issue.loading);
+  useEffect(() => {
+    dispatch(actions.readAllIssues());
+  }, [dispatch]);
+  if (issues) {
+    var data = issues.map((el) => (
+      <IssueTableData key={el.id} onClick={() => handleClick(1)} data={el} />
+    ));
+  }
   return (
     <div className={classes.IssueTable}>
       <table role="table">
@@ -56,9 +61,13 @@ const IssueTable = (props) => {
         </thead>
 
         <tbody>
-          <IssueTableData onClick={() => handleClick(1)} data={data} />
-          <IssueTableData onClick={() => handleClick(1)} data={data} />
-          <IssueTableData onClick={() => handleClick(1)} data={data} />
+          {!loading ? (
+            data
+          ) : (
+            <tr>
+              <td>yükleniyor</td>
+            </tr>
+          )}
         </tbody>
       </table>
       <GeneralModal

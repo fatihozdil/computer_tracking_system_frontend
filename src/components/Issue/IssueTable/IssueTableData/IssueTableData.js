@@ -6,7 +6,7 @@ import classes from "./IssueTableData.module.scss";
 const IssueTableData = (props) => {
   return (
     <tr>
-      <td>{props.data.issue_id}</td>
+      <td>{props.data.id}</td>
       <td>{props.data.computer_id}</td>
       <td>{props.data.sender_name}</td>
       <td>{props.data.sender_title}</td>
@@ -15,9 +15,9 @@ const IssueTableData = (props) => {
       <td>
         <span
           className="material-icons"
-          style={{ color: props.data.is_solved ? "green" : "red" }}
+          style={{ color: props.data.isSolved === "1" ? "green" : "red" }}
         >
-          {props.data.is_solved ? "done" : "highlight_off"}
+          {props.data.isSolved === "1" ? "done" : "highlight_off"}
         </span>
       </td>
       <td>{props.data.solver_name}</td>
