@@ -3,6 +3,7 @@
   @include pageLayout();
   > h3 {
     color: $main-color;
+    text-align: center;
   }
   .signInBox {
     max-width: 400px;

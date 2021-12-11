@@ -8,7 +8,7 @@ const NavigationText = (props) => {
       <NavLink
         to={props.link}
         exact={props.exact}
-        className={({ isActive }) => isActive && classes.active}
+        className={({ isActive }) => (isActive ? classes.active : "")}
       >
         {props.children}
       </NavLink>

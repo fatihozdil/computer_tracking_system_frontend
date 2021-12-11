@@ -3,7 +3,6 @@
 let DEBUG = true;
 let HOST_URL = "";
 
-if(DEBUG)
-	HOST_URL = "http://127.0.0.1:8000";
+if (DEBUG) HOST_URL = "http://localhost/computer_tracking_system_backend/api/";
 
-export {HOST_URL};
+export { HOST_URL };
