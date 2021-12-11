@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { Route, Routes, Navigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import * as actions from "./store/actions/index";
 
 //components
@@ -13,12 +13,14 @@ import UsersPage from "./containers/UsersPage/UsersPage";
 import CreateIssuePage from "./containers/CreateIssuePage/CreateIssuePage";
 
 function App() {
-  const token = useSelector((state) => state.auth.token);
+  const token = localStorage.getItem("token");
   const dispatch = useDispatch();
-
+  const { pathname } = useLocation();
   useEffect(() => {
     //check if user token expired
-    dispatch(actions.authCheckState());
+    if (pathname !== "signin") {
+      dispatch(actions.authCheckState());
+    }
   }, []);
 
   let routes;

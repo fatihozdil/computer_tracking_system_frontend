@@ -12,9 +12,9 @@ const GeneralModal = React.forwardRef((props, ref) => {
       <div className={classes.title}>
         <h4>UYARI!</h4>
       </div>
-      <dıv className={classes.message}>
+      <div className={classes.message}>
         <p>{props.children}</p>
-      </dıv>
+      </div>
       <div className={classes.actions}>
         <Button onClick={props.onClick} style={{ backgroundColor: "red" }}>
           iptal et

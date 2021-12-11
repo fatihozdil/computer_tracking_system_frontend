@@ -9,10 +9,9 @@ export const authStart = () => {
   };
 };
 
-export const authSuccess = (token) => {
+export const authSuccess = () => {
   return {
     type: actionTypes.AUTH_SUCCESS,
-    token: token,
   };
 };
 export const authFail = (error) => {
@@ -84,15 +83,18 @@ export const auth = (email, password, isSignup, name, password2) => {
         returnSecureToken: true,
       };
     }
-
-    axios
-      .post(url, authData)
+    const config = {
+      method: "POST",
+      body: JSON.stringify(authData),
+    };
+    fetch(url, config)
+      .then((data) => data.json())
       .then((response) => {
         if (!isSignup) {
-          const token = response.data.token;
+          const token = response.token;
           localStorage.setItem("token", token);
-          console.log(response);
-          dispatch(authSuccess(response.data.token));
+          dispatch(authSuccess());
+          window.location.reload();
         } else {
           dispatch(signupSuccess());
         }
@@ -104,34 +106,17 @@ export const auth = (email, password, isSignup, name, password2) => {
 };
 
 const getUserInfo = (token) => {
-//   const headers = {
-//     "Content-Type": "application/json",
-//     Authorization: `bearer ${token}`,
-//   };
-//   const myHeaders = new Headers();
-
-// myHeaders.append('Content-Type', 'application/json');
-// myHeaders.append('Authorization', token);
-//   console.log(token);
-//   fetch(HOST_URL + "user/readUserById", {
-//     method: 'GET',
-//     headers: myHeaders
-//   })
-//     .then((response) => response.json())
-//     .then((data) => console.log(data))
-//     .catch((err) => console.log(err));
-  axios
-    .get(HOST_URL + "user/readUserById", {
-      headers: {
-        Authorization: token,
-      },
-    })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  const config = {
+    method: "GET",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+  };
+  fetch(HOST_URL + "user/readUserById", config)
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.error(err));
 };
 
 // check authentication
