@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import * as actions from "../../store/actions/index";
@@ -12,13 +12,20 @@ const IssuePage = () => {
 
   const issues = useSelector((state) => state.issue.issues);
 
+  const [orderData, setOrderData] = useState();
+
   useEffect(() => {
-    dispatch(actions.readAllIssues());
-  }, [dispatch]);
+    setTimeout(() => {
+      dispatch(actions.readAllIssues(orderData));
+    }, 1000);
+  }, [dispatch, orderData]);
 
   const routes = (
     <Routes>
-      <Route path="/" element={<IssueTable issues={issues} />} />
+      <Route
+        path="/"
+        element={<IssueTable issues={issues} setOrderData={setOrderData} />}
+      />
       <Route path="/detail/:id" element={<IssueDetailPage />} />
     </Routes>
   );

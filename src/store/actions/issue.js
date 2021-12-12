@@ -21,8 +21,17 @@ export const readIssueFail = (err) => {
 };
 
 //read all issues
-export const readAllIssues = () => {
+export const readAllIssues = (order) => {
   return (dispatch, getState) => {
+    let str;
+
+    let url = HOST_URL + "/issue/read";
+    if (order) {
+      if (order.order) str = "ASC";
+      else str = "DESC";
+
+      url = HOST_URL + "/issue/read?entity=" + order.entity + "&order=" + str;
+    }
     const token = getState().auth.token;
     dispatch(readIssueStart());
     const config = {
@@ -32,7 +41,7 @@ export const readAllIssues = () => {
         "Content-Type": "application/json",
       },
     };
-    fetch(HOST_URL + "/issue/read", config)
+    fetch(url, config)
       .then((response) => response.json())
       .then((data) => dispatch(readIssueSuccess(data.data)))
       .catch((err) => {
@@ -43,7 +52,7 @@ export const readAllIssues = () => {
 };
 
 //read issues by computer id
-export const readIssuesByComputerId = (computer_id, issue_id,setState) => {
+export const readIssuesByComputerId = (computer_id, issue_id, setState) => {
   return (dispatch, getState) => {
     const token = getState().auth.token;
     const config = {

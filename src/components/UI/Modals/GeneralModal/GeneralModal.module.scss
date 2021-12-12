@@ -12,6 +12,7 @@
   flex-direction: column;
   background-color: rgb(156, 155, 155);
   border-radius: 20px;
+  z-index: -1;
   .title {
     border-bottom: 1px solid grey;
     h4 {
@@ -28,4 +29,5 @@
 
 .GeneralModal_open {
   @include transformEffect_show(-50%, 0%);
+  z-index: 1;
 }
