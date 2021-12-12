@@ -9,10 +9,17 @@ const SenderProperties = (props) => {
     "Gönderen Eposta",
     "Bildirilme Tarihi",
   ];
-  const table = titles.map((el) => (
+  const issueData = {
+    sender_name: props.issueData.sender_name,
+    sender_title: props.issueData.sender_title,
+    sender_message: props.issueData.sender_message,
+    sender_mail: props.issueData.sender_mail,
+    reported_date: props.issueData.reported_date,
+  };
+  const table = Object.keys(issueData).map((el, i) => (
     <div className={classes.property}>
-      <label for={el}>{el}</label>
-      <p id={el}>test</p>
+      <label for={el}>{titles[i]}</label>
+      <p id={el}>{issueData[el]}</p>
     </div>
   ));
   return <div className={classes.SenderProperties}>{table}</div>;

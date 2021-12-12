@@ -29,7 +29,7 @@ function App() {
     routes = (
       <Routes>
         <Route path="/signin" element={<SignInPage />} />
-        <Route path="*" element={<Navigate to="/signin" />} />
+        {/* <Route path="*" element={<Navigate to="/signin" />} /> */}
       </Routes>
     );
   } else {
@@ -39,7 +39,7 @@ function App() {
         <Route path="/computers/*" element={<ComputersPage />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/CreateIssue" element={<CreateIssuePage />} />
-        <Route path="*" element={<Navigate to="/issue" />} />
+        {/* <Route path="*" element={<Navigate to="/issue" />} /> */}
       </Routes>
     );
   }
