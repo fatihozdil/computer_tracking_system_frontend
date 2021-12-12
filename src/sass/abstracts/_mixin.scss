@@ -26,13 +26,18 @@
 
 @mixin tableView_property() {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
   align-items: center;
   text-align: center;
   label {
     color: $main-color;
     font-weight: bold;
     width: 30%;
+    text-align: start;
+  }
+  p{
+    text-align: start;
+    word-wrap: break-word;
   }
 }
 //used to add effect to the dropdowns default css
