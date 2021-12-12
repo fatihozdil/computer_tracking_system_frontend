@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link , useLocation} from "react-router-dom";
 import * as actions from "../../../../store/actions/index";
 //components
 import Button from "../../../UI/Button/Button";
@@ -8,7 +8,7 @@ import classes from "./IssueTableData.module.scss";
 
 const IssueTableData = (props) => {
   const { solver_id, computer_id } = props.data;
-
+  let {pathname} = useLocation();
   const [computerData, setComputerData] = useState();
   const [solverData, setSolverData] = useState();
   const dispatch = useDispatch();
@@ -19,8 +19,8 @@ const IssueTableData = (props) => {
     if (solver_id !== null) {
       dispatch(actions.getUserById(solver_id, setSolverData));
     }
-  }, [dispatch]);
-  const pathname = `/issue/detail/${props.data.id}`;
+  }, []);
+  const pathname1 = `/issue/detail/${props.data.id}`;
   return (
     <tr>
       <td>{props.data.id}</td>
@@ -42,7 +42,7 @@ const IssueTableData = (props) => {
       <td>
         <Button>
           <Link
-            to={pathname}
+            to={pathname1}
             state={{
               computer: computerData,
               solverData: solverData,

@@ -29,7 +29,7 @@ const IssueDetailPage = (props) => {
         setOtherIssues
       )
     );
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div className={classes.IssueDetailPage}>
