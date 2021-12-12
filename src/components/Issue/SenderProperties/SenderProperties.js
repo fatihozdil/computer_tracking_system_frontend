@@ -17,8 +17,8 @@ const SenderProperties = (props) => {
     reported_date: props.issueData.reported_date,
   };
   const table = Object.keys(issueData).map((el, i) => (
-    <div className={classes.property}>
-      <label for={el}>{titles[i]}</label>
+    <div key={i} className={classes.property}>
+      <label htmlFor={el}>{titles[i]}</label>
       <p id={el}>{issueData[el]}</p>
     </div>
   ));

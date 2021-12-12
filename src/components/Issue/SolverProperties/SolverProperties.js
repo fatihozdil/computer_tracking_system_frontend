@@ -14,7 +14,7 @@ const SolverProperties = ({ solverData, issueData }) => {
   }
   const table = Object.keys(solverData ? data : titles).map((el, i) => {
     return (
-      <div className={classes.property}>
+      <div key={i} className={classes.property}>
         <label htmlFor={el}>{titles[i]}</label>
         <p id={el}>{solverData ? data[el] : "çözülmedi"}</p>
       </div>
