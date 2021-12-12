@@ -19,7 +19,7 @@ const GeneralModal = React.forwardRef((props, ref) => {
         <Button onClick={props.onClick} style={{ backgroundColor: "red" }}>
           iptal et
         </Button>
-        <Button>Devam et</Button>
+        <Button onClick={props.continueAction}>Devam et</Button>
       </div>
     </div>
   );

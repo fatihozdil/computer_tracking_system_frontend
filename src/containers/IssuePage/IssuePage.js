@@ -9,7 +9,7 @@ import classes from "./IssuePage.module.scss";
 
 const IssuePage = () => {
   const dispatch = useDispatch();
-
+  const [deleteStatus, setDeletestatus] = useState(false);
   const issues = useSelector((state) => state.issue.issues);
 
   const [orderData, setOrderData] = useState();
@@ -17,14 +17,20 @@ const IssuePage = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(actions.readAllIssues(orderData));
-    }, 1000);
-  }, [dispatch, orderData]);
+    }, 100);
+  }, [dispatch, orderData, deleteStatus]);
 
   const routes = (
     <Routes>
       <Route
         path="/"
-        element={<IssueTable issues={issues} setOrderData={setOrderData} />}
+        element={
+          <IssueTable
+            issues={issues}
+            setOrderData={setOrderData}
+            setDeletestatus={setDeletestatus}
+          />
+        }
       />
       <Route path="/detail/:id" element={<IssueDetailPage />} />
     </Routes>

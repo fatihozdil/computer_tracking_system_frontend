@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link , useLocation} from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as actions from "../../../../store/actions/index";
 //components
 import Button from "../../../UI/Button/Button";
@@ -8,7 +8,6 @@ import classes from "./IssueTableData.module.scss";
 
 const IssueTableData = (props) => {
   const { solver_id, computer_id } = props.data;
-  let {pathname} = useLocation();
   const [computerData, setComputerData] = useState();
   const [solverData, setSolverData] = useState();
   const dispatch = useDispatch();
@@ -46,7 +45,7 @@ const IssueTableData = (props) => {
             state={{
               computer: computerData,
               solverData: solverData,
-              issueData: props.data
+              issueData: props.data,
             }}
           >
             detay

@@ -1,12 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import UseComponentVisible from "../../../helpers/Dropdown";
+import * as actions from "../../../store/actions/index";
 
 //components
 import GeneralModal from "../../UI/Modals/GeneralModal/GeneralModal";
 import classes from "./IssueTable.module.scss";
 import IssueTableData from "./IssueTableData/IssueTableData";
-const IssueTable = ({ issues, setOrderData }) => {
+const IssueTable = ({ issues, setOrderData, setDeletestatus }) => {
+  const [issue_id, setIssue_id] = useState();
+  const dispatch = useDispatch();
   const entity = useRef();
   const order = useRef(false);
 
@@ -14,10 +17,17 @@ const IssueTable = ({ issues, setOrderData }) => {
 
   if (issues) {
     var data = issues.map((el) => (
-      <IssueTableData key={el.id} onClick={() => handleClick(1)} data={el} />
+      <IssueTableData
+        key={el.id}
+        setIssue_id={setIssue_id}
+        onClick={() => {
+          handleClick(1);
+          setIssue_id(el.id);
+        }}
+        data={el}
+      />
     ));
   }
-
   const changeOrderHandler = (e) => {
     order.current = !order.current;
 
@@ -71,6 +81,11 @@ const IssueTable = ({ issues, setOrderData }) => {
       <GeneralModal
         onClick={() => handleClick(false)}
         ref={ref}
+        continueAction={() => {
+          dispatch(actions.deleteIssueById(issue_id));
+          handleClick(false);
+          setDeletestatus((state) => !state);
+        }}
         isVisible={isComponentVisible}
       >
         Bu problemi silmek istediğinize emin misiniz?

@@ -75,3 +75,24 @@ export const readIssuesByComputerId = (computer_id, issue_id, setState) => {
       .catch((err) => console.error(err));
   };
 };
+
+//delete issue
+export const deleteIssueById = (id) => {
+  return (dispatch, getState) => {
+    const token = getState().auth.token;
+
+    const config = {
+      method: "POST",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: id }),
+    };
+
+    fetch(HOST_URL + "issue/delete", config)
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+  };
+};
