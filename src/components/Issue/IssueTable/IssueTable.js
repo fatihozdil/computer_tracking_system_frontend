@@ -7,7 +7,7 @@ import UseComponentVisible from "../../../helpers/Dropdown";
 import GeneralModal from "../../UI/Modals/GeneralModal/GeneralModal";
 import classes from "./IssueTable.module.scss";
 import IssueTableData from "./IssueTableData/IssueTableData";
-const IssueTable = ({issues, loading}) => {
+const IssueTable = ({issues}) => {
   const { ref, isComponentVisible, handleClick } = UseComponentVisible(false);
  
 
@@ -57,7 +57,7 @@ const IssueTable = ({issues, loading}) => {
         </thead>
 
         <tbody>
-          {!loading ? (
+          {data ? (
             data
           ) : (
             <tr>

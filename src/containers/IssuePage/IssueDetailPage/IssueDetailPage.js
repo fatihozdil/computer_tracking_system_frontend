@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import * as actions from "../../../store/actions/index";
+
+//components
 import ComputerProperties from "../../../components/Computer/ComputerProperties/ComputerProperties";
 import IssueTable from "../../../components/Issue/IssueTable/IssueTable";
 import SenderProperties from "../../../components/Issue/SenderProperties/SenderProperties";
@@ -11,9 +15,21 @@ import UseComponentVisible from "../../../helpers/Dropdown";
 import classes from "./IssueDetailPage.module.scss";
 
 const IssueDetailPage = (props) => {
+  const [otherIssues, setOtherIssues] = useState();
   const location = useLocation();
+  const dispatch = useDispatch();
   const { computer, solverData, issueData } = location.state;
   const { ref, isComponentVisible, handleClick } = UseComponentVisible(false);
+
+  useEffect(() => {
+    dispatch(
+      actions.readIssuesByComputerId(
+        issueData.computer_id,
+        issueData.id,
+        setOtherIssues
+      )
+    );
+  }, []);
 
   return (
     <div className={classes.IssueDetailPage}>
@@ -38,7 +54,13 @@ const IssueDetailPage = (props) => {
 
         <h3>Bu Bilgisayara Ait Bildirilmiş Diğer Sorunlar</h3>
       </div>
-      <IssueTable />
+      {otherIssues ? (
+        <IssueTable issues={otherIssues} />
+      ) : (
+        <p style={{textAlign: 'center'}}>bu bilgisayara ait bildirilen başka sorun bulunmadı</p>
+      )}
+
+      {/* warning modal  */}
       <GeneralModal
         onClick={() => handleClick(false)}
         ref={ref}

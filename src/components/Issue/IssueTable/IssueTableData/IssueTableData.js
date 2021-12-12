@@ -20,7 +20,7 @@ const IssueTableData = (props) => {
       dispatch(actions.getUserById(solver_id, setSolverData));
     }
   }, [dispatch]);
-  const pathname = `/issue/detail/${computer_id}`;
+  const pathname = `/issue/detail/${props.data.id}`;
   return (
     <tr>
       <td>{props.data.id}</td>

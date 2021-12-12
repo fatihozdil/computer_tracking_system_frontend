@@ -12,20 +12,13 @@ const IssuePage = () => {
 
   const issues = useSelector((state) => state.issue.issues);
 
-  const loading = useSelector((state) => state.issue.loading);
-
   useEffect(() => {
-
     dispatch(actions.readAllIssues());
-
   }, [dispatch]);
 
   const routes = (
     <Routes>
-      <Route
-        path="/"
-        element={<IssueTable issues={issues} loading={loading} />}
-      />
+      <Route path="/" element={<IssueTable issues={issues} />} />
       <Route path="/detail/:id" element={<IssueDetailPage />} />
     </Routes>
   );

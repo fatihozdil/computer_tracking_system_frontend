@@ -36,8 +36,33 @@ export const readAllIssues = () => {
       .then((response) => response.json())
       .then((data) => dispatch(readIssueSuccess(data.data)))
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         dispatch(readIssueFail(err));
       });
+  };
+};
+
+//read issues by computer id
+export const readIssuesByComputerId = (computer_id, issue_id,setState) => {
+  return (dispatch, getState) => {
+    const token = getState().auth.token;
+    const config = {
+      method: "GET",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+    };
+    fetch(
+      HOST_URL +
+        "/issue/readIssuesByComputerId?computer_id=" +
+        computer_id +
+        "&issue_id=" +
+        issue_id,
+      config
+    )
+      .then((response) => response.json())
+      .then((data) => setState(data.data))
+      .catch((err) => console.error(err));
   };
 };
