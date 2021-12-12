@@ -14,7 +14,10 @@ const SolverMessageInput = (props) => {
         onChange={changeHandler}
         placeholder="Mesajınızı Buraya Yazınız"
       />
-      <Button onClick={props.onClick}>Kaydet</Button>
+      <Button onClick={() => {
+        props.onClick(1);
+        props.updateHandler(message)
+      }}>Kaydet</Button>
     </div>
   );
 };

@@ -16,6 +16,10 @@ import classes from "./IssueDetailPage.module.scss";
 
 const IssueDetailPage = (props) => {
   const [otherIssues, setOtherIssues] = useState();
+  const [updateData, setUpdateData] = useState({
+    id: null,
+    solver_message: null,
+  });
   const location = useLocation();
   const dispatch = useDispatch();
   const { computer, solverData, issueData } = location.state;
@@ -31,6 +35,13 @@ const IssueDetailPage = (props) => {
     );
   }, [location.pathname]);
 
+  const updateIssueHandler = (state) => {
+    setUpdateData({
+      ...updateData,
+      solver_message: state,
+      id: issueData.id,
+    });
+  };
   return (
     <div className={classes.IssueDetailPage}>
       <div className={classes.main}>
@@ -49,7 +60,10 @@ const IssueDetailPage = (props) => {
         </DropdownTable>
 
         {!issueData.solver_id && (
-          <SolverMessageInput onClick={() => handleClick(1)} />
+          <SolverMessageInput
+            onClick={handleClick}
+            updateHandler={updateIssueHandler}
+          />
         )}
 
         <h3>Bu Bilgisayara Ait Bildirilmiş Diğer Sorunlar</h3>
@@ -57,13 +71,19 @@ const IssueDetailPage = (props) => {
       {otherIssues ? (
         <IssueTable issues={otherIssues} />
       ) : (
-        <p style={{textAlign: 'center'}}>bu bilgisayara ait bildirilen başka sorun bulunmadı</p>
+        <p style={{ textAlign: "center" }}>
+          bu bilgisayara ait bildirilen başka sorun bulunmadı
+        </p>
       )}
 
       {/* warning modal  */}
       <GeneralModal
         onClick={() => handleClick(false)}
         ref={ref}
+        continueAction={() => {
+          dispatch(actions.updateIssue(updateData));
+          handleClick(false);
+        }}
         isVisible={isComponentVisible}
       >
         Bu problemi güncellemek istediğinize emin misiniz?

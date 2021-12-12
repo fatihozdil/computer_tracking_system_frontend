@@ -92,6 +92,26 @@ export const deleteIssueById = (id) => {
 
     fetch(HOST_URL + "issue/delete", config)
       .then((response) => response.json())
+      .then((data) => data)
+      .catch((err) => console.error(err));
+  };
+};
+
+//update issues
+export const updateIssue = (data) => {
+  console.log(data)
+  return (dispatch, getState) => {
+    const token = getState().auth.token;
+    const config = {
+      method: "PUT",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    fetch(HOST_URL + "issue/update", config)
+      .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((err) => console.error(err));
   };
