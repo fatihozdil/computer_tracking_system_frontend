@@ -40,3 +40,23 @@ export const readComputerById = (id, setState) => {
       .catch((err) => console.error(err));
   };
 };
+
+//update computer
+export const updateComputerById = (data) => {
+  return (dispatch, getState) => {
+    const token = getState().auth.token;
+    const config = {
+      method: "PUT",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+
+    fetch(HOST_URL + "computer/updateComputer", config)
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+  };
+};

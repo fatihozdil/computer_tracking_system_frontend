@@ -21,7 +21,10 @@ const ComputerProperties = (props) => {
     setComputerData({
       ...computerData,
       [e.target.name]: e.target.value,
+      id: computer.id,
     });
+
+    props.setUpdateComputerData(computerData);
   };
 
   const properties = Object.keys(computerData).map((el, i) => {

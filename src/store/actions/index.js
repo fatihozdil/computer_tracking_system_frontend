@@ -4,7 +4,7 @@ export {
   readAllIssues,
   readIssuesByComputerId,
   deleteIssueById,
-  updateIssue
+  updateIssue,
 } from "./issue";
-export { readComputerById } from "./computer";
+export { readComputerById, updateComputerById } from "./computer";
 export { getUserById } from "./user";

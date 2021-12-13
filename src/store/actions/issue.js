@@ -99,7 +99,7 @@ export const deleteIssueById = (id) => {
 
 //update issues
 export const updateIssue = (data) => {
-  console.log(data)
+  console.log(data);
   return (dispatch, getState) => {
     const token = getState().auth.token;
     const config = {
@@ -110,9 +110,6 @@ export const updateIssue = (data) => {
       },
       body: JSON.stringify(data),
     };
-    fetch(HOST_URL + "issue/update", config)
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.error(err));
+    fetch(HOST_URL + "issue/update", config).catch((err) => console.error(err));
   };
 };

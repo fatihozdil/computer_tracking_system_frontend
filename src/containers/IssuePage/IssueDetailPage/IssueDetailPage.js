@@ -20,6 +20,7 @@ const IssueDetailPage = (props) => {
     id: null,
     solver_message: null,
   });
+  const [updateComputerData, setUpdateComputerData] = useState();
   const location = useLocation();
   const dispatch = useDispatch();
   const { computer, solverData, issueData } = location.state;
@@ -42,13 +43,17 @@ const IssueDetailPage = (props) => {
       id: issueData.id,
     });
   };
+
   return (
     <div className={classes.IssueDetailPage}>
       <div className={classes.main}>
         <h1>{computer.computer_name} Numaralı Bilgisayar</h1>
 
         <DropdownTable title="Bilgisayar Özellikleri">
-          <ComputerProperties computer={computer} />
+          <ComputerProperties
+            computer={computer}
+            setUpdateComputerData={setUpdateComputerData}
+          />
         </DropdownTable>
 
         <DropdownTable title="Problemi Bildiren Bilgileri">
@@ -82,6 +87,7 @@ const IssueDetailPage = (props) => {
         ref={ref}
         continueAction={() => {
           dispatch(actions.updateIssue(updateData));
+          dispatch(actions.updateComputerById(updateComputerData));
           handleClick(false);
         }}
         isVisible={isComponentVisible}
