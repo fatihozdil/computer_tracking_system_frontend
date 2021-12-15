@@ -15,7 +15,6 @@ import UseComponentVisible from "../../../helpers/Dropdown";
 import classes from "./IssueDetailPage.module.scss";
 
 const IssueDetailPage = (props) => {
-  const { updateStatus } = props;
   const navigate = useNavigate();
   const [message, setMessage] = useState(false);
   const [otherIssues, setOtherIssues] = useState();
@@ -49,8 +48,12 @@ const IssueDetailPage = (props) => {
       solver_message: state,
       id: issueData.id,
     });
+
   };
-  console.log(updateStatus);
+  const updateIssueRequestHandler = () => {
+    dispatch(actions.updateIssue(updateData));
+    dispatch(actions.updateComputerById(updateComputerData));
+  }
   return (
     <div className={classes.IssueDetailPage}>
       {message && (
@@ -102,8 +105,7 @@ const IssueDetailPage = (props) => {
         onClick={() => handleClick(false)}
         ref={ref}
         continueAction={() => {
-          dispatch(actions.updateIssue(updateData));
-          dispatch(actions.updateComputerById(updateComputerData));
+          updateIssueRequestHandler();
           setMessage(true);
           setTimeout(() => {
             navigate("/issue");

@@ -37,7 +37,6 @@ const IssuePage = () => {
         element={
           <IssueDetailPage
             setUpdateStatus={setUpdateStatus}
-            updateStatus={updateStatus}
           />
         }
       />
