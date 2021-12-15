@@ -81,7 +81,6 @@ export const auth = (email, password, isSignup, name, password2) => {
           const token = response.token;
           localStorage.setItem("token", token);
           dispatch(authSuccess(token));
-          window.location.reload();
         }
       })
       .catch((err) => {

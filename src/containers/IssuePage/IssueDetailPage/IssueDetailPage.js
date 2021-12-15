@@ -16,6 +16,9 @@ import classes from "./IssueDetailPage.module.scss";
 
 const IssueDetailPage = (props) => {
   const [otherIssues, setOtherIssues] = useState();
+  const [deleteStatus, setDeletestatus] = useState(false);
+  const [orderData, setOrderData] = useState();
+
   const [updateData, setUpdateData] = useState({
     id: null,
     solver_message: null,
@@ -31,10 +34,11 @@ const IssueDetailPage = (props) => {
       actions.readIssuesByComputerId(
         issueData.computer_id,
         issueData.id,
-        setOtherIssues
+        setOtherIssues,
+        orderData
       )
     );
-  }, [location.pathname]);
+  }, [location.pathname, orderData, deleteStatus]);
 
   const updateIssueHandler = (state) => {
     setUpdateData({
@@ -74,7 +78,11 @@ const IssueDetailPage = (props) => {
         <h3>Bu Bilgisayara Ait Bildirilmiş Diğer Sorunlar</h3>
       </div>
       {otherIssues ? (
-        <IssueTable issues={otherIssues} />
+        <IssueTable
+          issues={otherIssues}
+          setOrderData={setOrderData}
+          setDeletestatus={setDeletestatus}
+        />
       ) : (
         <p style={{ textAlign: "center" }}>
           bu bilgisayara ait bildirilen başka sorun bulunmadı

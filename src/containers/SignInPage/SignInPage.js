@@ -4,11 +4,13 @@ import { useDispatch } from "react-redux";
 import Button from "../../components/UI/Button/Button";
 import classes from "./SignInPage.module.scss";
 import * as actions from "../../store/actions/index";
+import { useNavigate } from "react-router";
 const SignInPage = (props) => {
   const [userData, setUserDate] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleChange = (evt) => {
     setUserDate({
@@ -19,6 +21,8 @@ const SignInPage = (props) => {
 
   const submitHandler = () => {
     dispatch(actions.auth(userData.email, userData.password));
+    navigate('/issue');
+
   };
 
   return (

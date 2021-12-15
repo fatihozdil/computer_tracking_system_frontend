@@ -33,6 +33,7 @@ export const readAllIssues = (order) => {
       url = HOST_URL + "/issue/read?entity=" + order.entity + "&order=" + str;
     }
     const token = getState().auth.token;
+    console.log(token);
     dispatch(readIssueStart());
     const config = {
       method: "GET",
@@ -52,9 +53,22 @@ export const readAllIssues = (order) => {
 };
 
 //read issues by computer id
-export const readIssuesByComputerId = (computer_id, issue_id, setState) => {
+export const readIssuesByComputerId = (
+  computer_id,
+  issue_id,
+  setState,
+  order
+) => {
   return (dispatch, getState) => {
     const token = getState().auth.token;
+
+    let url =
+      HOST_URL +
+      "/issue/readIssuesByComputerId?computer_id=" +
+      computer_id +
+      "&issue_id=" +
+      issue_id;
+
     const config = {
       method: "GET",
       headers: {
@@ -62,14 +76,22 @@ export const readIssuesByComputerId = (computer_id, issue_id, setState) => {
         "Content-Type": "application/json",
       },
     };
-    fetch(
-      HOST_URL +
+    let str;
+    if (order) {
+      if (order.order) str = "ASC";
+      else str = "DESC";
+      url =
+        HOST_URL +
         "/issue/readIssuesByComputerId?computer_id=" +
         computer_id +
         "&issue_id=" +
-        issue_id,
-      config
-    )
+        issue_id +
+        "&entity=" +
+        order.entity +
+        "&order=" +
+        str;
+    }
+    fetch(url, config)
       .then((response) => response.json())
       .then((data) => setState(data.data))
       .catch((err) => console.error(err));
@@ -99,7 +121,6 @@ export const deleteIssueById = (id) => {
 
 //update issues
 export const updateIssue = (data) => {
-  console.log(data);
   return (dispatch, getState) => {
     const token = getState().auth.token;
     const config = {

@@ -13,7 +13,7 @@ import UsersPage from "./containers/UsersPage/UsersPage";
 import CreateIssuePage from "./containers/CreateIssuePage/CreateIssuePage";
 
 function App() {
-  const token = useSelector(state => state.auth.token);
+  const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   useEffect(() => {
@@ -24,26 +24,28 @@ function App() {
   }, [pathname, dispatch]);
 
   let routes;
+routes = (
+    <Routes>
+      <Route path="/issue/*" element={<IssuePage />} />
+      <Route path="/computers/*" element={<ComputersPage />} />
+      <Route path="/users" element={<UsersPage />} />
+      <Route path="/CreateIssue" element={<CreateIssuePage />} />
+      {/* 
 
+      <Route path="*" element={<Navigate to="/issue" />} /> 
+      */}
+    </Routes>
+  );
   if (!token) {
     routes = (
       <Routes>
         <Route path="/signin" element={<SignInPage />} />
-        {/* <Route path="*" element={<Navigate to="/signin" />} /> */}
-      </Routes>
-    );
-  } else {
-    routes = (
-      <Routes>
-        <Route path="/issue/*" element={<IssuePage />} />
-        <Route path="/computers/*" element={<ComputersPage />} />
-        <Route path="/users" element={<UsersPage />} />
-        <Route path="/CreateIssue" element={<CreateIssuePage />} />
-        {/* <Route path="*" element={<Navigate to="/issue" />} /> */}
+        {/*
+         <Route path="*" element={<Navigate to="/signin" />} />
+          */}
       </Routes>
     );
   }
-
   return (
     <div className="App" style={{ backgroundColor: "#d9d9d9" }}>
       <Layout>{routes}</Layout>

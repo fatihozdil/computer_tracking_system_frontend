@@ -11,14 +11,13 @@ const IssuePage = () => {
   const dispatch = useDispatch();
   const [deleteStatus, setDeletestatus] = useState(false);
   const issues = useSelector((state) => state.issue.issues);
-
   const [orderData, setOrderData] = useState();
 
   useEffect(() => {
     setTimeout(() => {
       dispatch(actions.readAllIssues(orderData));
     }, 100);
-  }, [dispatch, orderData, deleteStatus]);
+  }, [dispatch, orderData, deleteStatus ]);
 
   const routes = (
     <Routes>
