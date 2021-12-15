@@ -9,6 +9,7 @@ import classes from "./IssuePage.module.scss";
 
 const IssuePage = () => {
   const dispatch = useDispatch();
+  const [updateStatus, setUpdateStatus] = useState(false);
   const [deleteStatus, setDeletestatus] = useState(false);
   const issues = useSelector((state) => state.issue.issues);
   const [orderData, setOrderData] = useState();
@@ -17,7 +18,7 @@ const IssuePage = () => {
     setTimeout(() => {
       dispatch(actions.readAllIssues(orderData));
     }, 100);
-  }, [dispatch, orderData, deleteStatus ]);
+  }, [dispatch, orderData, deleteStatus, updateStatus]);
 
   const routes = (
     <Routes>
@@ -31,7 +32,15 @@ const IssuePage = () => {
           />
         }
       />
-      <Route path="/detail/:id" element={<IssueDetailPage />} />
+      <Route
+        path="/detail/:id"
+        element={
+          <IssueDetailPage
+            setUpdateStatus={setUpdateStatus}
+            updateStatus={updateStatus}
+          />
+        }
+      />
     </Routes>
   );
   return <div className={classes.IssuePage}>{routes}</div>;

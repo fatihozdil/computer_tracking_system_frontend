@@ -33,7 +33,6 @@ export const readAllIssues = (order) => {
       url = HOST_URL + "/issue/read?entity=" + order.entity + "&order=" + str;
     }
     const token = getState().auth.token;
-    console.log(token);
     dispatch(readIssueStart());
     const config = {
       method: "GET",

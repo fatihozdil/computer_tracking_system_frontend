@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as actions from "../../../store/actions/index";
 
 //components
@@ -15,6 +15,9 @@ import UseComponentVisible from "../../../helpers/Dropdown";
 import classes from "./IssueDetailPage.module.scss";
 
 const IssueDetailPage = (props) => {
+  const { updateStatus } = props;
+  const navigate = useNavigate();
+  const [message, setMessage] = useState(false);
   const [otherIssues, setOtherIssues] = useState();
   const [deleteStatus, setDeletestatus] = useState(false);
   const [orderData, setOrderData] = useState();
@@ -47,9 +50,14 @@ const IssueDetailPage = (props) => {
       id: issueData.id,
     });
   };
-
+  console.log(updateStatus);
   return (
     <div className={classes.IssueDetailPage}>
+      {message && (
+        <div className={classes.message}>
+          <p>Değişikler kaydedildi</p>
+        </div>
+      )}
       <div className={classes.main}>
         <h1>{computer.computer_name} Numaralı Bilgisayar</h1>
 
@@ -96,6 +104,11 @@ const IssueDetailPage = (props) => {
         continueAction={() => {
           dispatch(actions.updateIssue(updateData));
           dispatch(actions.updateComputerById(updateComputerData));
+          setMessage(true);
+          setTimeout(() => {
+            navigate("/issue");
+          }, 1000);
+          props.setUpdateStatus((state) => !state);
           handleClick(false);
         }}
         isVisible={isComponentVisible}
