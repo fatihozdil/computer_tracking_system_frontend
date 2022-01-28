@@ -1,5 +1,10 @@
 @import "../../../sass/main.scss";
 .ComputerDetailPage {
+  .message {
+    background-color: green;
+    color: white;
+    padding: 5px;
+  }
   .main {
     margin: 0 auto 0 auto;
     max-width: 1300px;

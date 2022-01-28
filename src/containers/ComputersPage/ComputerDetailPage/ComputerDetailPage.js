@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import ComputerProperties from "../../../components/Computer/ComputerProperties/ComputerProperties";
 import FixturesDataTable from "../../../components/Computer/FixturesTable/FixturesDataTable/FixturesDataTable";
@@ -9,8 +10,10 @@ import DropdownTable from "../../../components/UI/DropdownTable/DropdownTable";
 import GeneralModal from "../../../components/UI/Modals/GeneralModal/GeneralModal";
 import UseComponentVisible from "../../../helpers/Dropdown";
 import classes from "./ComputerDetailPage.module.scss";
-
+import * as actions from "../../../store/actions/index";
 const ComputerDetailPage = (props) => {
+  const dispatch = useDispatch();
+  const [status, setStatus] = useState();
   const { ref, isComponentVisible, handleClick } = UseComponentVisible(false);
   //initialize location method
   const location = useLocation();
@@ -33,9 +36,16 @@ const ComputerDetailPage = (props) => {
       data={el}
     />
   ));
+
   return (
     <div className={classes.ComputerDetailPage}>
+  
       <div className={classes.main}>
+      {status && (
+        <div className={classes.message}>
+          <p>Değişikler kaydedildi</p>
+        </div>
+      )}
         <div className={classes.title}>
           <h1>5 Numaralı Bilgisayar</h1>
           <Button onClick={() => handleClick(1)}>Değişiklikleri Kaydet</Button>
@@ -55,7 +65,9 @@ const ComputerDetailPage = (props) => {
         onClick={() => handleClick(false)}
         ref={ref}
         continueAction={() => {
+          dispatch(actions.updateComputerById(updateComputerData));
           handleClick(false);
+          setStatus(true);
         }}
         isVisible={isComponentVisible}
       >

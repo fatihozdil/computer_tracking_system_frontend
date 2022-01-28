@@ -13,7 +13,6 @@ const FixturesDataTable = (props) => {
     // copy fixtures to new array to update in object
     let newArr = [...props.updateComputerData.fixtures];
     newArr[props.index][e.target.name] = e.target.value;
-    console.log(newArr[0]);
     props.setUpdateComputerData({
       ...props.updateComputerData,
       fixtures: newArr,
