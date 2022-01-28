@@ -6,16 +6,23 @@ import classes from "./ComputerListDataTable.module.scss";
 const ComputerListDataTable = (props) => {
   return (
     <tr>
-      <td>{props.data.computer_id}</td>
+      <td>{props.data.id}</td>
       <td>{props.data.computer_name}</td>
-      <td>{props.data.operating_system}</td>
+      <td>{props.data.opr_sys}</td>
       <td>{props.data.cpu}</td>
       <td>{props.data.ram}</td>
       <td>{props.data.storage}</td>
 
       <td>
         <Button>
-          <Link to="detail">detay</Link>
+          <Link
+            to={`detail/${props.data.id}`}
+            state={{
+              computer: props.data,
+            }}
+          >
+            detay
+          </Link>
         </Button>
       </td>
       <td>

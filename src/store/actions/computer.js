@@ -2,26 +2,36 @@ import jwtDecode from "jwt-decode";
 import { HOST_URL } from "../../settings.js";
 import * as actionTypes from "./actionTypes";
 
-export const readComputersStart = () => {
+export const readComputerSuccess = (computers) => {
   return {
-    type: actionTypes.READ_COMPUTERS_START,
-  };
-};
-
-export const readComputersSuccess = (computers) => {
-  return {
-    type: actionTypes.READ_COMPUTERS_SUCCESS,
+    type: actionTypes.READ_COMPUTER_SUCCESS,
     computers: computers,
   };
 };
-
-export const readComputersFail = (error) => {
+export const readSearchedComputerSuccess = (filteredComputers) => {
   return {
-    type: actionTypes.READ_COMPUTERS_FAIL,
-    error: error,
+    type: actionTypes.READ_SEARCHED_COMPUTER_SUCCESS,
+    filteredComputers: filteredComputers,
   };
 };
 
+//read all computers
+export const readAllComputers = () => {
+  return (dispatch, getState) => {
+    const token = getState().auth.token;
+    const config = {
+      method: "GET",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+    };
+    fetch(HOST_URL + "computer/readComputers", config)
+      .then((response) => response.json())
+      .then((data) => dispatch(readComputerSuccess(data.data)))
+      .catch((err) => console.error(err));
+  };
+};
 //read computer by id
 export const readComputerById = (id, setState) => {
   return (dispatch, getState) => {

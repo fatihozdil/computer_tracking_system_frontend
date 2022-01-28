@@ -12,7 +12,7 @@ import { setAuthorizationToken } from "./store/actions/setAuthToken";
 //reducers
 import authReducer from "./store/reducers/auth";
 import issueReducer from "./store/reducers/issue";
-
+import computerReducer from "./store/reducers/computer";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const jwtToken = localStorage.getItem("token");
 
@@ -23,6 +23,7 @@ if (jwtToken) {
 const rootReducer = combineReducers({
   auth: authReducer,
   issue: issueReducer,
+  computer: computerReducer,
 });
 
 const store = createStore(

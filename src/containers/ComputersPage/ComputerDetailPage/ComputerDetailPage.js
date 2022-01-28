@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ComputerProperties from "../../../components/Computer/ComputerProperties/ComputerProperties";
 import FixturesDataTable from "../../../components/Computer/FixturesTable/FixturesDataTable/FixturesDataTable";
 import FixturesTable from "../../../components/Computer/FixturesTable/FixturesTable";
@@ -8,6 +8,7 @@ import DropdownTable from "../../../components/UI/DropdownTable/DropdownTable";
 import classes from "./ComputerDetailPage.module.scss";
 
 const ComputerDetailPage = (props) => {
+  const [updateComputerData, setUpdateComputerData] = useState();
   const data = {
     order_no: "Sıra No",
     receipt_no: "Fiş No",
@@ -32,7 +33,10 @@ const ComputerDetailPage = (props) => {
           <Button>Değişiklikleri Kaydet</Button>
         </div>
         <DropdownTable title="Bilgisayar Özellikleri">
-          <ComputerProperties />
+          <ComputerProperties
+            computer={props.computer.slice(0, 11)}
+            setUpdateComputerData={setUpdateComputerData}
+          />
         </DropdownTable>
         <DropdownTable title="Demirbaşlar">
           <FixturesTable>

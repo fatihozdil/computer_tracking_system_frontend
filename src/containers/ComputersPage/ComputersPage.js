@@ -10,7 +10,7 @@ const ComputersPage = () => {
   const routes = (
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/detail" element={<ComputerDetailPage />} />
+      <Route path="/detail/:id" element={<ComputerDetailPage />} />
       <Route path="/create-newC" element={<AddNewComputer />} />
     </Routes>
   );

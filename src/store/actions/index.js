@@ -6,5 +6,5 @@ export {
   deleteIssueById,
   updateIssue,
 } from "./issue";
-export { readComputerById, updateComputerById } from "./computer";
+export { readComputerById, updateComputerById , readAllComputers} from "./computer";
 export { getUserById } from "./user";

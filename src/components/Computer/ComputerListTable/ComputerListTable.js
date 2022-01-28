@@ -11,6 +11,9 @@ const ComputerListTable = (props) => {
     ram: "ram",
     storage: "Depolama",
   };
+  const dataTable = props.computers.map((el) => {
+    return <ComputerListDataTable key={el.id} data={el} />;
+  });
   return (
     <div className={classes.ComputerListTable}>
       <table role="table">
@@ -37,9 +40,7 @@ const ComputerListTable = (props) => {
           </tr>
         </thead>
 
-        <tbody>
-          <ComputerListDataTable data={data} />
-        </tbody>
+        <tbody>{dataTable}</tbody>
       </table>
     </div>
   );
