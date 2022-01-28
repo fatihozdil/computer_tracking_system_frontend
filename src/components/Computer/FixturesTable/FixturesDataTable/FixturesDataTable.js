@@ -2,14 +2,15 @@ import React from "react";
 import classes from "./FixturesDataTable.module.scss";
 
 const FixturesDataTable = (props) => {
+  console.log(props.data)
   return (
     <tr>
       <td>
         <textarea
           className={classes.textarea}
           type="text"
-          name="order_no"
-          value={props.data ? props.data.order_no : ""}
+          name="row_no"
+          value={props.data ? props.data.row_no : ""}
         />
       </td>
       <td>
@@ -32,16 +33,16 @@ const FixturesDataTable = (props) => {
         <textarea
           className={classes.textarea}
           type="text"
-          name="product_code"
-          value={props.data ? props.data.product_code : ""}
+          name="transport_product_code"
+          value={props.data ? props.data.transport_product_code : ""}
         />
       </td>
       <td>
         <textarea
           className={classes.textarea}
           type="text"
-          name="brand"
-          value={props.data ? props.data.brand : ""}
+          name="brand_type"
+          value={props.data ? props.data.brand_type : ""}
         />
       </td>
       <td>
@@ -56,16 +57,16 @@ const FixturesDataTable = (props) => {
         <textarea
           className={classes.textarea}
           type="text"
-          name="regist_no"
-          value={props.data ? props.data.regist_no : ""}
+          name="registr_no"
+          value={props.data ? props.data.registr_no : ""}
         />
       </td>
       <td>
         <textarea
           className={classes.textarea}
           type="text"
-          name="old_regis_no"
-          value={props.data ? props.data.old_regis_no : ""}
+          name="old_regist_no"
+          value={props.data ? props.data.old_regist_no : ""}
         />
       </td>
       <td>
@@ -81,8 +82,8 @@ const FixturesDataTable = (props) => {
         <textarea
           className={classes.textarea}
           type="text"
-          name="warehouse"
-          value={props.data ? props.data.warehouse : ""}
+          name="wareHouse"
+          value={props.data ? props.data.wareHouse : ""}
         />
       </td>
       <td>

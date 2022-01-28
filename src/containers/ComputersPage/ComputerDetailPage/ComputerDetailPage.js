@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router";
 import ComputerProperties from "../../../components/Computer/ComputerProperties/ComputerProperties";
 import FixturesDataTable from "../../../components/Computer/FixturesTable/FixturesDataTable/FixturesDataTable";
 import FixturesTable from "../../../components/Computer/FixturesTable/FixturesTable";
@@ -8,6 +9,9 @@ import DropdownTable from "../../../components/UI/DropdownTable/DropdownTable";
 import classes from "./ComputerDetailPage.module.scss";
 
 const ComputerDetailPage = (props) => {
+  const location = useLocation();
+  const computer = { ...location.state.computer };
+  delete computer.fixtures;
   const [updateComputerData, setUpdateComputerData] = useState();
   const data = {
     order_no: "Sıra No",
@@ -24,6 +28,9 @@ const ComputerDetailPage = (props) => {
     unit_price: "Birim Fiyat",
     drop_date: "Düşüm Tarihi",
   };
+  const fixtureData = location.state.computer.fixtures.map((el) => (
+    <FixturesDataTable data={el} />
+  ));
 
   return (
     <div className={classes.ComputerDetailPage}>
@@ -34,14 +41,12 @@ const ComputerDetailPage = (props) => {
         </div>
         <DropdownTable title="Bilgisayar Özellikleri">
           <ComputerProperties
-            computer={props.computer.slice(0, 11)}
+            computer={computer}
             setUpdateComputerData={setUpdateComputerData}
           />
         </DropdownTable>
         <DropdownTable title="Demirbaşlar">
-          <FixturesTable>
-            <FixturesDataTable data={data} />
-          </FixturesTable>
+          <FixturesTable>{fixtureData}</FixturesTable>
         </DropdownTable>
         <h3>Bu Bilgisayara Ait Bildirilmiş Diğer Sorunlar</h3>
       </div>

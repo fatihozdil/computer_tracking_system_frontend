@@ -14,6 +14,7 @@ const ComputerListTable = (props) => {
   const dataTable = props.computers.map((el) => {
     return <ComputerListDataTable key={el.id} data={el} />;
   });
+  console.log(props.computers)
   return (
     <div className={classes.ComputerListTable}>
       <table role="table">
