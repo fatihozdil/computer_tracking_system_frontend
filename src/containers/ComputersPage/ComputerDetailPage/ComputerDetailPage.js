@@ -9,29 +9,28 @@ import DropdownTable from "../../../components/UI/DropdownTable/DropdownTable";
 import classes from "./ComputerDetailPage.module.scss";
 
 const ComputerDetailPage = (props) => {
+  //initialize location method
   const location = useLocation();
+  //copy location state
   const computer = { ...location.state.computer };
+  //delete data we dont need for computer properties part
   delete computer.fixtures;
-  const [updateComputerData, setUpdateComputerData] = useState();
-  const data = {
-    order_no: "Sıra No",
-    receipt_no: "Fiş No",
-    date: "Tarih",
-    product_code: "Taşınır Kodu/Ürün Kodu",
-    brand: "Markası Model Cins Ek Özellik",
-    measure_unit: "Ölçü Birimi",
-    regist_no: "Sicil No",
-    old_regis_no: "Eski Sicil No",
-    serial_no: "Seri No",
-    warehouse: "Ambar",
-    amount: "Miktar",
-    unit_price: "Birim Fiyat",
-    drop_date: "Düşüm Tarihi",
-  };
-  const fixtureData = location.state.computer.fixtures.map((el) => (
-    <FixturesDataTable data={el} />
-  ));
 
+  //create state to store computer properties data to use it while updating data
+  const [updateComputerData, setUpdateComputerData] = useState(
+    location.state.computer
+  );
+
+  const fixtureData = location.state.computer.fixtures.map((el, i) => (
+    <FixturesDataTable
+      updateComputerData={updateComputerData}
+      setUpdateComputerData={setUpdateComputerData}
+      key={el.id}
+      index={i}
+      data={el}
+    />
+  ));
+  console.log(updateComputerData);
   return (
     <div className={classes.ComputerDetailPage}>
       <div className={classes.main}>
@@ -48,7 +47,7 @@ const ComputerDetailPage = (props) => {
         <DropdownTable title="Demirbaşlar">
           <FixturesTable>{fixtureData}</FixturesTable>
         </DropdownTable>
-        <h3>Bu Bilgisayara Ait Bildirilmiş Diğer Sorunlar</h3>
+        <h3>Bu Bilgisayara Ait Bildirilmiş Sorunlar</h3>
       </div>
       <IssueTable />
     </div>
