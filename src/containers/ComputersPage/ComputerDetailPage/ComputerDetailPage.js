@@ -6,9 +6,12 @@ import FixturesTable from "../../../components/Computer/FixturesTable/FixturesTa
 import IssueTable from "../../../components/Issue/IssueTable/IssueTable";
 import Button from "../../../components/UI/Button/Button";
 import DropdownTable from "../../../components/UI/DropdownTable/DropdownTable";
+import GeneralModal from "../../../components/UI/Modals/GeneralModal/GeneralModal";
+import UseComponentVisible from "../../../helpers/Dropdown";
 import classes from "./ComputerDetailPage.module.scss";
 
 const ComputerDetailPage = (props) => {
+  const { ref, isComponentVisible, handleClick } = UseComponentVisible(false);
   //initialize location method
   const location = useLocation();
   //copy location state
@@ -30,13 +33,12 @@ const ComputerDetailPage = (props) => {
       data={el}
     />
   ));
-  console.log(updateComputerData);
   return (
     <div className={classes.ComputerDetailPage}>
       <div className={classes.main}>
         <div className={classes.title}>
           <h1>5 Numaralı Bilgisayar</h1>
-          <Button>Değişiklikleri Kaydet</Button>
+          <Button onClick={() => handleClick(1)}>Değişiklikleri Kaydet</Button>
         </div>
         <DropdownTable title="Bilgisayar Özellikleri">
           <ComputerProperties
@@ -47,9 +49,18 @@ const ComputerDetailPage = (props) => {
         <DropdownTable title="Demirbaşlar">
           <FixturesTable>{fixtureData}</FixturesTable>
         </DropdownTable>
-        <h3>Bu Bilgisayara Ait Bildirilmiş Sorunlar</h3>
       </div>
-      <IssueTable />
+      {/* warning modal  */}
+      <GeneralModal
+        onClick={() => handleClick(false)}
+        ref={ref}
+        continueAction={() => {
+          handleClick(false);
+        }}
+        isVisible={isComponentVisible}
+      >
+        Bu Bilgisayari güncellemek istediğinize emin misiniz?
+      </GeneralModal>
     </div>
   );
 };
